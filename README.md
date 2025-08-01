@@ -37,9 +37,9 @@ pip install -r requirements.txt
 ## Usage
 The API can be run locally (currently set to PORT 5000 in the last line of main.py):
 ```
-python3 main.py
+python3 -m gunicorn --bind 127.0.0.1:5000 -w 1 --timeout 300 "src.main:create_app()"
 ```
-Whatever you are using to consume to API (e.g. Postman) should send POST requests to the "/images/create-image" endpoint, with the prompt contained in the body:
+Whatever you are using to consume the API (e.g. Postman) should send POST requests to the "/images/create-image" endpoint, with the prompt contained in the body:
 ```
 {
     "prompt": "an emu riding a motorcycle"
