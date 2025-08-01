@@ -7,15 +7,14 @@ def load_models():
     print("Loading models from local cache...")
     
     # Define the path for model cache
-    cache_directory = "./local_model_cache"
+    # cache_directory = "./local_model_cache"
 
     # Load base model
     base = DiffusionPipeline.from_pretrained(
         "stabilityai/stable-diffusion-xl-base-1.0",
         torch_dtype=torch.float16,
         variant="fp16",
-        use_safetensors=True,
-        cache_dir=cache_directory
+        use_safetensors=True
     )
 
     # Load refiner model
@@ -25,8 +24,7 @@ def load_models():
         vae=base.vae,
         torch_dtype=torch.float16,
         use_safetensors=True,
-        variant="fp16",
-        cache_dir=cache_directory
+        variant="fp16"
     )
 
     # CPU offload enabled for both models to minimise GPU usage when not actively generating
