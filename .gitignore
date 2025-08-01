@@ -1,5 +1,5 @@
 # Local ML Model Cache
-local_model_cache
+local_model_cache/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
