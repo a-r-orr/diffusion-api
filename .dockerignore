@@ -11,7 +11,7 @@ __pycache__/
 .pytest_cache/
 tests/
 
-# Local model cache (never copy this into an image)
+# Local model cache
 local_model_cache/
 
 # Local environment
