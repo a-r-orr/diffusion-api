@@ -1,10 +1,7 @@
 from flask import Flask
 from flask_restx import Api
 from flask_cors import CORS
-# from diffusers import DiffusionPipeline
-# import torch
-# import io
-# from rembg import remove
+
 from .ml_logic import load_models
 from .api import ns_images
 
@@ -14,7 +11,8 @@ def create_app():
     CORS(app)
 
     # Initialise the API
-    api = Api(app, validate=True, version='1.0', title='Diffusion API', description='Provides a Stable Diffusion generated Image based on the provided prompt.')
+    api = Api(app, validate=True, version='1.0', title='Diffusion API', 
+              description='Provides a Stable Diffusion generated Image based on the provided prompt.')
 
     # Add the Images Namespace
     api.add_namespace(ns_images)

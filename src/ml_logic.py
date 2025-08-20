@@ -5,9 +5,6 @@ import torch
 def load_models():
     """Loads and returns the models from the local cache."""
     print("Loading models from local cache...")
-    
-    # Define the path for model cache
-    # cache_directory = "./local_model_cache"
 
     # Load base model
     base = DiffusionPipeline.from_pretrained(
@@ -28,9 +25,16 @@ def load_models():
     )
 
     # CPU offload enabled for both models to minimise GPU usage when not actively generating
+    # ---- These Lines enable CPU Offload - comment out if running on dedicated GPU ---
     base.enable_model_cpu_offload()
     refiner.enable_model_cpu_offload()
+    # --- --- --- --- --- --- ---
     
+    # ---- These lines move the models to the GPU - comment out if using CPU Offloading ---
+    # base.to("cuda")
+    # refiner.to("cuda")
+    # --- --- --- --- --- --- ---
+
     print("Models loaded successfully and ready.")
     return base, refiner
 
