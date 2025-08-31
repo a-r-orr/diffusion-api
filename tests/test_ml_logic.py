@@ -41,3 +41,27 @@ def test_create_image_pipeline_logic():
         denoising_start=high_noise_frac,
         image=["latent_image_output"],
     )
+
+def test_create_image_error():
+    """
+    Unit tests that create_image returns None if a model raises an exception.
+    """
+    # Create mock models and make one raise an error
+    mock_base = MagicMock()
+    mock_refiner = MagicMock()
+    mock_base.side_effect = Exception("Simulated base model failure")
+
+    prompt = "a test prompt"
+
+    # Call the function with the failing mock
+    result = create_image(prompt, mock_base, mock_refiner)
+
+    # Check that the function handled the error gracefully
+    # The function should catch the exception and return None
+    assert result is None
+
+    # Verify the base model was attempted
+    mock_base.assert_called_once()
+
+    # Verify the refiner was never called because the process failed early
+    mock_refiner.assert_not_called()

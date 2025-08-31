@@ -24,6 +24,7 @@ class GenImage(Resource):
         '''Route for creating a new image based on a prompt'''
         prompt = ns_images.payload['prompt']
         adj_prompt = "A 3D model of " + prompt + " with a blank background"
+        # adj_prompt = prompt
 
         # Create the image
         image = create_image(adj_prompt, current_app.base_model, current_app.refiner_model)

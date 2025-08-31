@@ -28,7 +28,7 @@ def test_create_image_endpoint(client, mocker, dummy_image):
 
 def test_failure_create_image_endpoint(client, mocker, failed_image):
     
-    # Mock the main.create_image function to enable faster testing
+    # Mock the create_image function to enable faster testing
     mock_create = mocker.patch('src.api.create_image', return_value=failed_image)
 
     # Simulate request to the endpoint
