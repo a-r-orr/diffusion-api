@@ -1,0 +1,10 @@
+[run]
+omit =
+    __pycache__/*
+    .pytest_cache/*
+    .vscode/*
+    calc_cov/*
+    images/*
+    local_model_cache/*
+    tests/*
+    /tmp/*

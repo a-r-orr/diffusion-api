@@ -47,7 +47,7 @@ Whatever you are using to consume the API (e.g. Postman) should send POST reques
 ```
 
 A Dockerfile has been provided to enable containerization of the API for deployment.
-With the current setup, running the below docker command will host the API locally on port 5000:
+With the current setup, running the below docker command will host the API locally on port 5000 once you have containerized the project:
 ```
 docker run --rm -it   --gpus all   -p 5000:8080   -e PORT=8080   -v "$(pwd)/local_model_cache:/home/appuser/.cache"   diffusion-api
 ```
